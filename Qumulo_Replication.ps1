@@ -1,16 +1,6 @@
-﻿
-
-
-###########################
-# Enable HTTPS
-###########################
 
 [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
 [System.Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-###########################
-# Get Token
-###########################
 
 $username = "admin"
 $password = Get-Content "C:\Temp\QPassword.txt" | ConvertTo-SecureString
@@ -27,10 +17,6 @@ $token = $token.bearer_token | Out-String
 $header = @{
     Authorization = "Bearer $token"
 }
-
-
-###########################
-###########################
 
 
 $runningLong=$false
