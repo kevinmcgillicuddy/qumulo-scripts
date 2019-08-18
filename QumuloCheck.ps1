@@ -1,17 +1,6 @@
-﻿
-
-
-###########################
-# Enable HTTPS
-###########################
 
 [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
 [System.Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-###########################
-# Get Token
-###########################
-
 
 $username = "admin"
 $password = Get-Content "C:\Temp\QPassword.txt" | ConvertTo-SecureString
@@ -31,8 +20,6 @@ $header = @{
 }
 
 
-###########################
-###########################
 $alert=0
 $replicationdetail=Invoke-RestMethod -Uri "https://st-qcluster01.bibleonstage.net:8000/v1/replication/source-relationships/status/" -method GET -Headers $header | convertto-json
 $hashtable = @{}
